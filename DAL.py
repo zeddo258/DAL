@@ -58,7 +58,7 @@ def compareFile(ansFileNames):
   ans_path = "ans.txt"
   for file in ansFileNames:
     print("Checking student:", file)
-    student_ans = open(file, encoding="utf8").readlines()
+    student_ans = open(file, encoding="big5").readlines()
     correct_ans = open(ans_path).readlines()
     diff = difflib.HtmlDiff().make_file(student_ans, correct_ans, ans_path, file)
     report = file[0:file.find('_')] + '_res.html'
