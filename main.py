@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, send_file
 from flask_dropzone import Dropzone
 from DAL import run
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -10,7 +10,7 @@ app.config.update(
     DROPZONE_MAX_FILE_SIZE = 1024,
     DROPZONE_TIMEOUT = 5*60*1000,
     DROPZONE_ALLOWED_FILE_CUSTOM = True,
-    DROPZONE_ALLOWED_FILE_TYPE = '.cpp, .c'
+    DROPZONE_ALLOWED_FILE_TYPE = '.cpp, .c, .txt'
 )
 
 dropzone = Dropzone(app)
@@ -22,10 +22,10 @@ def upload():
     return render_template('index.html')
 
 @app.route('/exec')
-def exec(): 
-    run()
+def exec():
+    res = run()
     #should return the list html compare
-    return "\nFinished."
+    return send_file('./ans.zip')
 
 
 

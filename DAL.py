@@ -1,8 +1,12 @@
 import os
 import subprocess
 import difflib
+from zipfile import ZipFile, ZIP_DEFLATED
+
 
 def getFileName(fileName, pathName):
+  if (os.path.exists(pathName) == False):
+    os.chdir("..")
   for x in os.listdir(pathName):
     fName = os.path.basename(x)
     if ".c" in fName:
@@ -10,6 +14,16 @@ def getFileName(fileName, pathName):
 
 def getDir():
   return "code"
+
+
+def zipFile():
+  zip_path = './ans.zip'
+  dir = './ans'
+  
+  with ZipFile(zip_path, 'w',ZIP_DEFLATED) as zip:
+    for file in os.listdir(dir):
+      fileDir = dir + '/' + file
+      zip.write(fileDir, arcname=file)
 
 
 def compileFile(fileName, pathName, execFileNames):
@@ -58,11 +72,17 @@ def compareFile(ansFileNames):
   ans_path = "ans.txt"
   for file in ansFileNames:
     print("Checking student:", file)
+    # Opening file for comparision
     student_ans = open(file, encoding="big5").readlines()
     correct_ans = open(ans_path).readlines()
+    # Create html content 
+    # to display different
     diff = difflib.HtmlDiff().make_file(student_ans, correct_ans, ans_path, file)
+
+    # Write html to file and save it 
     report = file[0:file.find('_')] + '_res.html'
-    diff_report = open(report, 'w+')
+    dir = "../ans/" + report
+    diff_report = open(dir, 'w+')
     diff_report.write(diff)
     diff_report.close()
 
@@ -72,13 +92,14 @@ def run():
   pathName = getDir() 
   execFileNames = []
   ansFileNames = []
+  
   getFileName(fileName, pathName)
   compileFile(fileName, pathName, execFileNames) 
   executeFile(execFileNames,ansFileNames)
   compareFile(ansFileNames)
   
-
-  wd = os.getcwd()
-  os.chdir(wd + "/..")
+  os.chdir('..')
+  zipFile()
+   
   
 
