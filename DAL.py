@@ -4,6 +4,11 @@ import difflib
 from zipfile import ZipFile, ZIP_DEFLATED
 
 
+def clear_prevAns():
+  dir = './ans'
+  for x in os.listdir(dir):
+    os.remove(os.path.join(dir, x))
+
 def getFileName(fileName, pathName):
   if (os.path.exists(pathName) == False):
     os.chdir("..")
@@ -11,9 +16,6 @@ def getFileName(fileName, pathName):
     fName = os.path.basename(x)
     if ".c" in fName:
       fileName.append(fName)
-
-def getDir():
-  return "code"
 
 
 def zipFile():
@@ -30,8 +32,7 @@ def compileFile(fileName, pathName, execFileNames):
   '''
     This function is to compile the code into executable 
   '''
-  wd = os.getcwd() # current working dir 
-  os.chdir(wd + '/code' ) # Change to the dir in which contain student code 
+  os.chdir(pathName) # Change to the dir in which contain student code 
   #To do: extract student ID from fileName
   for file in fileName:
     exe = file[0:file.find('_')]
@@ -87,9 +88,10 @@ def compareFile(ansFileNames):
     diff_report.close()
 
 
-def run():
+def run(pathName):
+  clear_prevAns() 
+
   fileName = []
-  pathName = getDir() 
   execFileNames = []
   ansFileNames = []
   
