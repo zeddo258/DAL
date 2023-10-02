@@ -33,6 +33,11 @@ def upload():
         file.save(os.path.join(app.config['UPLOAD_PATH'], file.filename) )
     return render_template('upload.html')
 
+@app.route('/list_html')
+def list_htmls():
+    html_files = os.listdir("ans")
+    return render_template("list_html.html", html_files=html_files)
+
 @app.route('/exec')
 def exec():
     path = app.config['UPLOAD_PATH']

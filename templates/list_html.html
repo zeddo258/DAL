@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of HTML files</title>
+</head>
+<body>
+    <h1>List of generated HTML files</h1>
+    <ul>
+        {% for file in html_files %}
+        <li>
+            <a href="{{ url_for('static', filename='generated_htmls/' + file) }}">{{ file }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

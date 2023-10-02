@@ -1,0 +1,9 @@
+*
+!*/
+!*.*
+*.cpp
+*.zip
+*.txt
+*.pyc
+!requirements.txt
+!readme.txt
