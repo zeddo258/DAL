@@ -1,12 +1,1 @@
-*
-!*/
-!*.*
-*.cpp
-*.zip
-*.txt
 *.pyc
-static/result
-uploads/*
-.vscode/*
-!requirements.txt
-!readme.txt

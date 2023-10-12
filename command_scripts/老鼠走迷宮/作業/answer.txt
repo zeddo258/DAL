@@ -1,0 +1,108 @@
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+********************
+Input a command(0, 1, 2): 1
+
+Input a file number: 101
+VVVVOO
+OEOVEE
+GVVVOE
+OOEOOE
+EEEOOO
+OOEEEE
+
+RRRROO
+OEOREE
+GRRROE
+OOEOOE
+EEEOOO
+OOEEEE
+
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+********************
+Input a command(0, 1, 2): 2
+
+Input a file number: 102
+
+Number of G (goals): 2
+VVVVOOVO
+OVOVVVVV
+VVVOOVOV
+VOVOVOVG
+VVVOVOVO
+VOVVVOVO
+VOVOVVVV
+VVVVOVOV
+OVOVVVVV
+VVVVOVVV
+
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+********************
+Input a command(0, 1, 2): 1
+
+Input a file number: 103
+VVVVOO
+OEOVEE
+EGVVOE
+OOEOOE
+EEEOOO
+OOEEEG
+
+RRRROO
+OEOREE
+EGRROE
+OOEOOE
+EEEOOO
+OOEEEG
+
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+********************
+Input a command(0, 1, 2): 2
+
+Input a file number: 104
+
+Number of G (goals): 2
+VVVVOOEO
+OEOVVVVV
+VVVOOEOV
+VOVOVOVG
+VEVOVOVO
+VOVVVOVO
+VOEOVVVE
+VVVGOEOG
+OEOEEEEE
+EEEEOEEG
+
+RRRROOEO
+OEORRRRR
+RRROOEOR
+ROROEORG
+REROEORO
+RORRRORO
+ROEORRRE
+RRRGOEOG
+OEOEEEEE
+EEEEOEEG
+
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+********************
+Input a command(0, 1, 2): 0

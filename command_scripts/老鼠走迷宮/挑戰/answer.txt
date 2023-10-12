@@ -1,0 +1,17 @@
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+********************
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 101
+free(): double free detected in tcache 2
+3
+102
+3
+103
+3
+104
+0
