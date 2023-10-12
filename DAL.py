@@ -1,98 +1,107 @@
 import os
 import subprocess
 import difflib
-from zipfile import ZipFile, ZIP_DEFLATED
+import uuid
+import shutil
+
+class Program:
+    def __init__(self, name: str) -> None:
+        self.name = name
+        self.state = None
+        self.error_message = None
+        self.output = None
 
 
-def getFileName():
-    fileName = []
-    for x in os.listdir('.'):
-        fName = os.path.basename(x)
-        if ".c" in fName:
-            fileName.append(fName)
-    return fileName
+class Auto_Test:
+    def __init__(self, upload_folder: str, topic: str, unit: str):
+        self.upload_folder = upload_folder
+        self.topic = topic
+        self.unit = unit
+        self.standard_answer = None
+        self.program_list:list[Program] = []
+        self.__initialize_standard_answer()
 
+    def __initialize_standard_answer(self):
+        answer_path = os.path.join('command_scripts', self.topic, self.unit)
+        answer_txt_path = os.path.join(answer_path, 'answer.txt')
+        if not os.path.exists(answer_txt_path):
+            result = subprocess.run(["g++", "-std=c++20", 'code.cpp', "-o", 'code'], cwd=answer_path, capture_output=True)
+            if result.returncode != 0:
+                raise Exception(result.stderr.decode())
+            program = Program('code')
+            self.__execute_single_program(program, answer_path)
+            with open(answer_txt_path, 'w') as file:
+                file.write(program.output)
+        with open(answer_txt_path) as file:
+            self.standard_answer = file.read().strip()
+        
 
-def compileFile(fileName: list[str]):
-    '''
-      This function is to compile the code into executable 
-    '''
-    # To do: extract student ID from fileName
-    execFileNames = []
-    
-    
-    for file in fileName:
-        exe = file[0:file.rfind('.')]
-        std = subprocess.run(["g++", file, "-o", exe], capture_output=True)
-        if (os.path.exists(exe) == True):
-            print("Compile status: ", exe, " success !!")
-            execFileNames.append(exe)
+    def __compile(self):
+        all_program = [f for f in os.listdir(self.upload_folder) if f.endswith('.cpp')]
+        for program_name in all_program:
+            program_name_without_extension, extension = os.path.splitext(program_name)
+            result = subprocess.run(["g++", "-std=c++20", program_name, "-o", program_name_without_extension], cwd=self.upload_folder, capture_output=True)
+            current_program = Program(program_name_without_extension)
+            if result.returncode != 0:
+                current_program.state = 'Compile Error'
+                current_program.error_message = result.stderr.decode()
+            self.program_list.append(current_program)
+            os.remove(os.path.join(self.upload_folder, program_name))
+
+    def __copy_all_files(self, src_dir: str, dest_dir: str):
+        if not os.path.exists(dest_dir):
+            os.makedirs(dest_dir)
+        for item in os.listdir(src_dir):
+            s = os.path.join(src_dir, item)
+            d = os.path.join(dest_dir, item)
+            if os.path.isfile(s):
+                shutil.copy2(s, d)
+            elif os.path.isdir(s):
+                shutil.copytree(s, d)
+
+    def __execute_single_program(self, program: Program, program_folder: str):
+        execute_folder_name = str(uuid.uuid4())
+        if os.path.exists(execute_folder_name):
+            os.remove(execute_folder_name)
+        os.mkdir(execute_folder_name)
+        
+        data_path = os.path.join('command_scripts', self.topic, 'source')
+        self.__copy_all_files(data_path, execute_folder_name)
+        
+        program_path = os.path.join(program_folder, program.name)
+        shutil.copy2(program_path, execute_folder_name)
+        
+        command_path = os.path.join('command_scripts', self.topic, self.unit, 'command.txt')
+        shutil.copy2(command_path, execute_folder_name)
+        
+        os.remove(os.path.join(program_folder, program.name))
+        
+        result = subprocess.run(["timeout", "1s", 'expect', '/home/ds/DAL/exp_script.exp', f"./{program.name}", "command.txt"], cwd=execute_folder_name, capture_output=True)
+        shutil.rmtree(execute_folder_name)
+        if result.returncode != 0:
+            program.state = 'Runtime Error'
         else:
-            errLog = exe + "_errLog.txt"
-            file = open(errLog, "w+")
-            file.write(std.stderr.decode())
-            file.close()
-            print("Compile status: ", exe, " failed, error available at :", errLog)
-    return execFileNames
+            program.state = 'Success'
+            program.output = result.stdout.decode().replace('spawn ./code', '').replace('\r', '').strip()
+
+    def __execute(self):
+        for i in range(len(self.program_list)):
+            self.__execute_single_program(self.program_list[i], self.upload_folder)
+            
+    def __compare(self):
+        for program in self.program_list:
+            student_ans = program.output.split('\n')
+            correct_ans = self.standard_answer.split('\n')
+            diff = difflib.HtmlDiff().make_file(student_ans, correct_ans)
+            with open(os.path.join(self.upload_folder, f'{program.name}.html'), "w") as file:
+                file.write(diff)
+            
+    def run(self):
+        self.__compile()
+        self.__execute()
+        self.__compare()
 
 
-def executeFile(execFileNames):
-    '''
-      This function take testing case number and exec file
-    '''
-    ansFileNames = []
-    # Get command
-    for exe in execFileNames:
-        # Student answer file
-        ansFile = exe + "_ans.txt"
-        ansFileNames.append(ansFile)
-        file = open(ansFile, "w+")
-        # Get command
-        commands = open("command.txt")
-        # Start executing
-        print("\nCurrently running :", exe)
-        exePath = "./" + exe  # Exec command
-        subprocess.run([exePath], stdin=commands, stdout=file)
-        print("\nSuccessfully execute", exe)
-
-        file.close()
-        commands.close()
-    return ansFileNames
-
-
-def compareFile(ansFileNames: list[str], folder_name: str):
-    ans_path = "ans.txt"
-    
-    report_list = []
-    for file in ansFileNames:
-        print("Checking student:", file)
-        # Opening file for comparision
-        student_ans = open(file, encoding="big5").readlines()
-        correct_ans = open(ans_path).readlines()
-        # Create html content
-        # to display different
-        diff = difflib.HtmlDiff().make_file(student_ans, correct_ans, ans_path, file)
-
-        # Write html to file and save it
-        report_name = file[0:file.rfind('_')] + '_compare.html'
-        report_folder_path = "../../static/result/" + folder_name
-        if not os.path.exists(report_folder_path):
-            os.makedirs(report_folder_path)
-        with open(os.path.join(report_folder_path, report_name), "w") as file:
-            file.write(diff)
-        report_list.append(report_name)
-    return report_list
-
-
-def run(folder_name: str):
-  try:
-    folder_path = os.path.join('uploads', folder_name)
-    os.chdir(folder_path)
-
-    fileName = getFileName()
-    execFileNames = compileFile(fileName)
-    ansFileNames = executeFile(execFileNames)
-    result = compareFile(ansFileNames, folder_name)
-    return zip(fileName, result)
-  finally:
-    os.chdir('../..')
+if __name__ == '__main__':
+    auto_test = Auto_Test('test', '老鼠走迷宮', '作業')
+    auto_test.run()

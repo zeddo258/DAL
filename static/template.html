@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>動態列表</title>
+    <title>DAL Test Report</title>
     <style>
         /* 容器樣式 */
         #dynamicList {
@@ -48,43 +49,14 @@
         .infinite-loop {
             color: orange;
         }
-
-        @media (max-width: 37.5rem) {
-            .list-item {
-                flex-basis: 100%;
-            }
-        }
     </style>
 </head>
 <body>
 
 
-<button onclick="addItem('success')">新增成功項目</button>
-<button onclick="addItem('error')">新增錯誤項目</button>
-<button onclick="addItem('infinite-loop')">新增無窮迴圈項目</button>
-
 <ul id="dynamicList">
+    <!-- 這裡會插入動態生成的項目 -->
 </ul>
-
-<script>
-    function addItem(statusType) {
-        const list = document.getElementById("dynamicList");
-        const newItem = document.createElement("li");
-        newItem.className = "list-item";
-
-        const fileElement = document.createElement("span");
-        fileElement.className = "file";
-        fileElement.innerHTML = "檔案 " + (list.childNodes.length + 1);
-
-        const statusElement = document.createElement("span");
-        statusElement.className = "status " + statusType;
-        statusElement.innerHTML = `狀態：${statusType.replace('-', ' ')}`;
-
-        newItem.appendChild(fileElement);
-        newItem.appendChild(statusElement);
-        list.appendChild(newItem);
-    }
-</script>
 
 </body>
 </html>

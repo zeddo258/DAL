@@ -14,18 +14,19 @@
 
         /* 單個列表項目樣式 */
         .list-item {
-            flex-basis: calc(50% - 0.5rem);
+            flex-basis: calc(50% - 0.5rem); /* 預設每行兩個項目 */
             margin: 0.25rem;
             padding: 1rem;
             background-color: #f9f9f9;
+            box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
-            list-style-type: none;
-            border-bottom: 0.1rem solid #ddd;
+            list-style-type: none; /* 移除項目符號 */
+            border-bottom: 0.1rem solid #ddd; /* 添加分割線 */
         }
 
         .list-item:hover {
-            background-color: #eee;
+            background-color: #eee; /* hover 效果 */
         }
 
         /* 檔案和狀態的樣式 */
@@ -34,54 +35,47 @@
         }
 
         .status {
-            padding-left: 1rem;
-        }
-
-        .success {
             color: green;
         }
 
-        .error {
-            color: red;
-        }
-
-        .infinite-loop {
-            color: orange;
-        }
-
+        /* 媒體查詢：螢幕寬度小於 37.5rem 時 */
         @media (max-width: 37.5rem) {
             .list-item {
-                flex-basis: 100%;
+                flex-basis: 100%; /* 每行一個項目 */
             }
         }
     </style>
 </head>
 <body>
 
-
-<button onclick="addItem('success')">新增成功項目</button>
-<button onclick="addItem('error')">新增錯誤項目</button>
-<button onclick="addItem('infinite-loop')">新增無窮迴圈項目</button>
+<button onclick="addItem()">新增項目</button>
 
 <ul id="dynamicList">
 </ul>
 
 <script>
-    function addItem(statusType) {
+    function addItem() {
+        // 獲取列表元素
         const list = document.getElementById("dynamicList");
+
+        // 創建一個新的列表項目
         const newItem = document.createElement("li");
         newItem.className = "list-item";
 
+        // 創建檔案和狀態的元素
         const fileElement = document.createElement("span");
         fileElement.className = "file";
         fileElement.innerHTML = "檔案 " + (list.childNodes.length + 1);
 
         const statusElement = document.createElement("span");
-        statusElement.className = "status " + statusType;
-        statusElement.innerHTML = `狀態：${statusType.replace('-', ' ')}`;
+        statusElement.className = "status";
+        statusElement.innerHTML = "狀態：正常";
 
+        // 將檔案和狀態元素添加到列表項目中
         newItem.appendChild(fileElement);
         newItem.appendChild(statusElement);
+
+        // 將新的列表項目添加到列表中
         list.appendChild(newItem);
     }
 </script>

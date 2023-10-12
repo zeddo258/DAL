@@ -1,0 +1,112 @@
+/* ===== Google Font Import - Poppins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #E3F2FD;
+}
+
+
+#homework{
+    position: absolute;
+    left: 5vw;
+}
+
+#type{
+    position: absolute;
+    left: 30vw;
+}
+
+
+
+.select-menu{
+    width: 24rem; 
+    margin: 2rem ;
+    z-index: 10;
+}
+.select-menu .select-btn{
+    display: flex;
+    height: 3.4375rem; 
+    background: #fff;
+    padding: 1.25rem; 
+    font-size: 1.125rem; 
+    font-weight: 400;
+    border-radius: 0.5rem; 
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow: 0 0 0.3125rem rgba(0,0,0,0.1); 
+    
+}
+.select-btn i{
+    font-size: 1.5625rem; 
+    transition: 0.3s;
+}
+.select-menu.active .select-btn i{
+    transform: rotate(-180deg);
+}
+.select-menu .options{
+    position: relative;
+    padding: 1.25rem; 
+    margin-top: 0.625rem; 
+    border-radius: 0.5rem; 
+    background: #fff;
+    box-shadow: 0 0 0.1875rem rgba(0,0,0,0.1);
+    display: none;
+}
+.select-menu.active .options{
+    display: block;
+}
+.options .option{
+    display: flex;
+    height: 3.4375rem; 
+    cursor: pointer;
+    padding: 0 1rem; 
+    border-radius: 0.5rem; 
+    align-items: center;
+    background: #fff;
+    z-index: 100;
+}
+.options .option:hover{
+    background: #F2F2F2;
+}
+.option i{
+    font-size: 1.5625rem; 
+    margin-right: 0.75rem; 
+}
+.option .option-text{
+    font-size: 1.125rem; 
+    color: #333;
+    z-index: 10;
+}
+
+.post-btn{
+    position: absolute;
+    left: 55vw;
+    margin: 2rem ;
+    display: flex;
+    height: 3.4375rem; 
+    background: #ffffff;
+    padding: 1.25rem; 
+    font-size: 1.125rem; 
+    font-weight: 400;
+    border-radius: 0.5rem; 
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow: 0 0 0.3125rem rgba(0,0,0,0.1); 
+    opacity: 0;
+}
+
+#drag-drop-area{
+    position: absolute;
+    left: 10vw;
+    top: 20vh;
+}
+
+
