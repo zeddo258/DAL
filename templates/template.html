@@ -1,9 +1,15 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>DAL Test Report</title>
     <style>
+        .title {
+            font-size: 2rem;
+            padding-left: 1rem;
+            
+        }
+
         /* 容器樣式 */
         #dynamicList {
             display: flex;
@@ -38,25 +44,49 @@
             padding-left: 1rem;
         }
 
-        .success {
+        .Success {
             color: green;
         }
 
-        .error {
+        .Runtime_Error {
+            color: orange;
+        }
+
+        .Compile_Error {
             color: red;
         }
 
-        .infinite-loop {
-            color: orange;
+        .list-item a {
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+        .list-item p {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+        .list-item:hover {
+            background-color: #eee;
         }
     </style>
 </head>
+
 <body>
 
-
-<ul id="dynamicList">
-    <!-- 這裡會插入動態生成的項目 -->
-</ul>
+    <a href="/" class="title">DAL Test Report</a>
+    <hr>
+    <ul id="dynamicList">
+        <!-- 這裡會插入動態生成的項目 -->
+    </ul>
 
 </body>
+
 </html>

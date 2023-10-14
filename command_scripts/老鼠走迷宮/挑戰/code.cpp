@@ -2,11 +2,9 @@
 // Exercise 02: Path finding in a Maze by WuYH@CYCU 2019/09
 //*******************************************************/
 //#define DEBUG
+//#define SHOW
 #define QUIZ
 
-//*******************************************************/
-//Header file for class Maze & CoXY by Wu, Yi-Hung 2019/9
-//*******************************************************/
 #include <iostream>                                     //cin, cout
 #include <cstdlib>                                      //system
 #include <string>	                                    //string type
@@ -142,6 +140,7 @@ public:
             topPtr = topPtr->next;                      // set a new top of stackR
             tempPtr->next = NULL;
             delete tempPtr;
+            tempPtr = NULL;
         } // end else
     }	// end stackR::pop
 
@@ -169,6 +168,7 @@ public:
     ~stackR()
     {   while (!isEmpty())                              // clear up the entire stackR
             pop();
+        topPtr = NULL;
     }   // end destructor
 
     void copyStack(const stackR& obj)                   // deep copy of a stackR object
@@ -350,6 +350,7 @@ public:
                 } //end while
                 if (line == coMax.getY())
                     success = true;                     // the number of lines is correct
+                delete [] temp;							// DEBUG 
             } //end if
             fclose(infile);							    // close the file
         } //end else
@@ -427,6 +428,12 @@ int getM(int minM, int maxM)                                            // get a
                 delete [] mArray[i];                    // remove the maze line by line
             delete [] mArray;                           // remove the set of pointers
             mArray = NULL;
+        } //end if
+        if (sArray != NULL)
+        {   for (int i = 0; i < coMax.getY(); i++)
+                delete [] sArray[i];                    // remove the maze line by line
+            delete [] sArray;                           // remove the set of pointers
+            sArray = NULL;
         } //end if
     } //end Maze::clr
 

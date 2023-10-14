@@ -1,3 +1,4 @@
+spawn ./code
 
 *** Path Finding ***
 * 0. Quit          *

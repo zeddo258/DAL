@@ -8,24 +8,51 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background: #E3F2FD;
+    background-color: #ffffff;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
 }
 
+.menu-area{
+    position: absolute;
+    top: 5vw;
+    left: 20vw;
+    width: 50vw;
+    height: 80vh;
+    display: flex;
+    background-image: radial-gradient(circle, #ffffff, #ffffffe0);
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    border-radius: 5%;
+}
 
+.back-ground{
+    
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    opacity: 0.7;
+    z-index: -10;
+    
+}
 #homework{
     position: absolute;
-    left: 5vw;
+    left: 2vw;
+    top: 1vh
 }
 
 #type{
     position: absolute;
-    left: 30vw;
+    left: 20vw;
+    top: 1vh
 }
 
 
 
 .select-menu{
-    width: 24rem; 
+    width: 15rem; 
     margin: 2rem ;
     z-index: 10;
 }
@@ -87,7 +114,8 @@ body{
 
 .post-btn{
     position: absolute;
-    left: 55vw;
+    left: 37vw;
+    top: 1vh;
     margin: 2rem ;
     display: flex;
     height: 3.4375rem; 
@@ -101,12 +129,45 @@ body{
     justify-content: space-between;
     box-shadow: 0 0 0.3125rem rgba(0,0,0,0.1); 
     opacity: 0;
+    z-index: 10;
 }
 
 #drag-drop-area{
     position: absolute;
-    left: 10vw;
-    top: 20vh;
+    left: 5vw;
+    top: 15vh;
+    z-index: 5;
 }
 
 
+#modal-container {
+    display: none; /* 預設情況下隱藏 */
+    position: fixed; /* 固定定位 */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5); /* 半透明背景 */
+    z-index: 1000; /* 確保它出現在其他元素之上 */
+  }
+  
+  .logout{
+    position: fixed;
+    left: 80vw;
+    top: 0vh;
+    margin: 2rem ;
+    display: block;
+    height: 3.4375rem; 
+    background: #ffffff;
+    padding: 1.25rem; 
+    font-size: 1.125rem; 
+    font-weight: 400;
+    border-radius: 0.5rem; 
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow: 0 0 0.3125rem rgba(0,0,0,0.1); 
+    z-index: 100;
+    text-decoration: none;
+    color: inherit;
+}

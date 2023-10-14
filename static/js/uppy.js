@@ -44,22 +44,53 @@ uppy.on('files-added', (files) => {
 uppy.on('upload-error', (file, error, response) => {
     console.log('Error with file:', file.id);
     uppy.retryAll()  // 手動重試所有失敗的上傳
-  })
+})
 
-document.addEventListener("DOMContentLoaded", function() {
+
+
+uppy.on('complete', (result) => {
+    console.log('successful files:', result.successful);
+    console.log('failed files:', result.failed);
+    fetch('/upload_complete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain'
+        },
+        body: 'upload_complete'
+    })
+    .then(response => response.json())  
+    .then(response => {
+        if (response.link !== 'None') {
+            console.log('Server response:', response.link);
+            // 根據服務器回覆的 URL 進行跳轉
+            window.location.href = response.link;
+        }
+        else{
+            const modalContainer = document.getElementById('modal-container');
+            modalContainer.style.display = 'none';
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
     const submitBtn = document.querySelector(".post-btn");
-    submitBtn.addEventListener("click", function() {
+    submitBtn.addEventListener("click", function () {
         const homeworkMenu = document.querySelector("#homework .sBtn-text").innerText;
         const typeMenu = document.querySelector("#type .sBtn-text").innerText;
 
         const postData = {
-            homework: homeworkMenu,
-            type: typeMenu
+            topic: homeworkMenu,
+            unit: typeMenu
         };
 
         uppy.upload();  // 手動觸發 Uppy 的上傳
 
-    
+
         fetch("/upload", {
             method: "POST",
             headers: {
@@ -67,12 +98,11 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             body: JSON.stringify(postData)
         })
-
-        .then(data => {
-            console.log("Success:", data);
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-        });
+            .then(data => {
+                console.log("Success:", data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
     });
 });

@@ -11,7 +11,7 @@ after 1
 while {[gets $fp line] >= 0} {
     send "$line\r"
     expect "*" {}
-    after 1
+    after 5
 }
 close $fp
 

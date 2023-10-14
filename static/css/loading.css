@@ -1,0 +1,248 @@
+body,
+html {
+
+}
+
+.app {
+  display: flex;
+  height: 80vh;
+  width: 50vw;
+  margin:0 auto;
+  margin-top: 4rem;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background: radial-gradient(ellipse at center, #fff 30%, #EAF6FF 47%);
+  border-radius: 3%;
+}
+
+.wrapper {
+  position: relative;
+  height: 400px;
+  width: 300px;
+}
+
+.controls {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  right: 0;
+  padding: 0 20px;
+  text-align: center;
+}
+
+
+input[type=range]::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #a0d9cb;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.character {
+  position: relative;
+}
+.character__eye {
+  transition: transform 0.3s ease;
+  transform: translate(10px, 0px);
+}
+.character__body {
+  fill: #a0d8cb;
+  transition: transform 0.3s ease;
+}
+
+.character.-stressed .-part-1 {
+  transform: translate(-17px, 20px);
+}
+.character.-stressed .-part-2 {
+  transform: translate(-8px, 10px);
+}
+.character.-stressed .-part-3 {
+  transform: translate(-2px, 4px);
+}
+.character.-stressed .-eye-l {
+  transform: translate(2px, 41px);
+}
+.character.-stressed .-eye-l-extra {
+  visibility: hidden;
+  transform: translate(-3px, 40px);
+}
+.character.-stressed .-eye-r {
+  transform: translate(-3px, 40px);
+}
+
+.computer {
+  position: absolute;
+  width: 30%;
+  top: 49%;
+  left: 12%;
+}
+.computer__screen {
+  fill: #D6E5E3;
+}
+.computer__keyboard {
+  fill: #CACFD6;
+}
+.computer.-typing {
+  -webkit-animation: vibrate 0.6s linear infinite both;
+          animation: vibrate 0.6s linear infinite both;
+}
+.computer.-stressed {
+  -webkit-animation: vibrate-crazy 0.5s linear infinite both;
+          animation: vibrate-crazy 0.5s linear infinite both;
+}
+
+.table {
+  position: absolute;
+  top: 58%;
+  left: -60%;
+  fill: #EAF6FF;
+  width: 200%;
+}
+
+.arm {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.arm path {
+  fill: none;
+  stroke: #eaf6ff;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.arm-typing-right {
+  transform-origin: 200px 168px;
+  transform: rotate(140deg);
+}
+
+.arm-typing-left {
+  transform-origin: 190px 160px;
+  transform: rotate(143deg);
+}
+
+.arm-thinking-right {
+  transform-origin: 200px 168px;
+  -webkit-animation: scratch-chin 10s ease 0s infinite normal;
+          animation: scratch-chin 10s ease 0s infinite normal;
+}
+
+@-webkit-keyframes scratch-chin {
+  0% {
+    transform: rotate(-40deg);
+  }
+  5% {
+    transform: rotate(-3deg);
+  }
+  40% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-40deg);
+  }
+  100% {
+    transform: rotate(-40deg);
+  }
+}
+@-webkit-keyframes vibrate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes vibrate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes vibrate-crazy {
+  0% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-2px, -2px);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  30% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, 2px);
+  }
+  50% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, -2px);
+  }
+  70% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(-2px, -2px);
+  }
+  90% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes vibrate-crazy {
+  0% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-2px, -2px);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  30% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, 2px);
+  }
+  50% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, -2px);
+  }
+  70% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(-2px, -2px);
+  }
+  90% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}

@@ -1,90 +1,65 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
-    <title>動態列表</title>
-    <style>
-        /* 容器樣式 */
-        #dynamicList {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* 單個列表項目樣式 */
-        .list-item {
-            flex-basis: calc(50% - 0.5rem);
-            margin: 0.25rem;
-            padding: 1rem;
-            background-color: #f9f9f9;
-            display: flex;
-            justify-content: space-between;
-            list-style-type: none;
-            border-bottom: 0.1rem solid #ddd;
-        }
-
-        .list-item:hover {
-            background-color: #eee;
-        }
-
-        /* 檔案和狀態的樣式 */
-        .file {
-            font-weight: bold;
-        }
-
-        .status {
-            padding-left: 1rem;
-        }
-
-        .success {
-            color: green;
-        }
-
-        .error {
-            color: red;
-        }
-
-        .infinite-loop {
-            color: orange;
-        }
-
-        @media (max-width: 37.5rem) {
-            .list-item {
-                flex-basis: 100%;
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "{{ url_for('static', filename = 'css/style.css') }}">
+    <link rel="stylesheet" href = "{{ url_for('static', filename = 'css/loading.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://releases.transloadit.com/uppy/v3.17.0/uppy.min.css" rel="stylesheet">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js'></script>
+    <title>DAL</title>
 </head>
 <body>
+    
+
+    <div class="menu-area">
+
+    <div id="homework" class="select-menu">
+        <div class="select-btn">
+            <span id='hw'class="sBtn-text">Select Homework</span>
+            <i class="bx bx-chevron-down"></i>
+        </div>
+
+        <ul class="options" id="homeworkOptions">
+
+        </ul>
+    </div>
+
+    <div id="type" class="select-menu">
+        <div class="select-btn">
+            <span class="sBtn-text">作業</span>
+            <i class="bx bx-chevron-down"></i>
+        </div>
+
+        <ul class="options">
+            <li class="option">
+                
+                <span class="option-text">作業</span>
+            </li>
+            <li class="option">
+                
+                <span class="option-text">挑戰</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="post-btn">開始比對</div>
+    
+
+    <div id="drag-drop-area"></div>
+</div>
+    <img class="back-ground" src="{{ url_for('static', filename='img/bg.png') }}" >
+    <div id="modal-container"></div>
+    <a class="logout" href="{{ url_for('logout') }}" class="btn btn-danger">登出</a>
+    <script src = "{{ url_for('static', filename = 'js/script.js') }}"></script>
+    <script type="module" src = "{{ url_for('static', filename = 'js/uppy.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'js/loading.js') }}"></script>
 
 
-<button onclick="addItem('success')">新增成功項目</button>
-<button onclick="addItem('error')">新增錯誤項目</button>
-<button onclick="addItem('infinite-loop')">新增無窮迴圈項目</button>
-
-<ul id="dynamicList">
-</ul>
-
-<script>
-    function addItem(statusType) {
-        const list = document.getElementById("dynamicList");
-        const newItem = document.createElement("li");
-        newItem.className = "list-item";
-
-        const fileElement = document.createElement("span");
-        fileElement.className = "file";
-        fileElement.innerHTML = "檔案 " + (list.childNodes.length + 1);
-
-        const statusElement = document.createElement("span");
-        statusElement.className = "status " + statusType;
-        statusElement.innerHTML = `狀態：${statusType.replace('-', ' ')}`;
-
-        newItem.appendChild(fileElement);
-        newItem.appendChild(statusElement);
-        list.appendChild(newItem);
-    }
-</script>
 
 </body>
 </html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>DAL Test Report</title>
+    <style>
+        .title {
+            font-size: 2rem;
+            padding-left: 1rem;
+        }
+
+        /* 容器樣式 */
+        #dynamicList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 單個列表項目樣式 */
+        .list-item {
+            flex-basis: calc(50% - 0.5rem);
+            margin: 0.25rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            border-bottom: 0.1rem solid #ddd;
+        }
+
+        .list-item:hover {
+            background-color: #eee;
+        }
+
+        /* 檔案和狀態的樣式 */
+        .file {
+            font-weight: bold;
+        }
+
+        .status {
+            padding-left: 1rem;
+        }
+
+        .Success {
+            color: green;
+        }
+
+        .Error {
+            color: red;
+        }
+
+        .Infinite-loop {
+            color: orange;
+        }
+
+        .list-item a {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .list-item p {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .list-item:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">DAL Test Report</h1>
+    <hr />
+    <ul id="dynamicList">
+        <!-- 這裡會插入動態生成的項目 -->
+        <li class="list-item"><p href="https://www.google.com"><span class="file">檔案1</span><span
+                    class="status Success">Success</span></p></li>
+        <li class="list-item"><a href="https://www.google.com"><span class="file">檔案2</span><span
+                    class="status Error">Error</span></a></li>
+        <li class="list-item"><a href="https://www.google.com"><span class="file">檔案3</span><span
+                    class="status Infinite-loop">Infinite-loop</span></a></li>
+    </ul>
+</body>
+
+</html>
