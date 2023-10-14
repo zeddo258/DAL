@@ -1,4 +1,272 @@
-spawn ./code
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+******************** 
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 101
+VVVVOO
+OVOVVV
+GVVVOV
+OOVOOE
+EEEOOO
+OOEEEE
+
+RREEOO
+OROEEE
+GREEOE
+OOEOOE
+EEEOOO
+OOEEEE
+
+
+Shortest path length = 5
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+******************** 
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 102
+VVVVOOVO
+OVOVVVVV
+VVVOOVOV
+VOVOEOEG
+VVVOEOEO
+VOVVVOEO
+VOVOEEEE
+VEVEOEOE
+OEOEEEEE
+EEEEOEEE
+
+RRRROOEO
+OEORRRRR
+EEEOOEOR
+EOEOEOEG
+EEEOEOEO
+EOEEEOEO
+EOEOEEEE
+EEEEOEOE
+OEOEEEEE
+EEEEOEEE
+
+
+Shortest path length = 11
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+******************** 
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 103
+VVVVOO
+OVOVVV
+EGVVOE
+OOEOOE
+EEEOOO
+OOEEEG
+
+RREEOO
+OROEEE
+EGEEOE
+OOEOOE
+EEEOOO
+OOEEEG
+
+
+Shortest path length = 4
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+******************** 
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 104
+VVVVOOVO
+OVOVVVVV
+VVVOOVOV
+VOVOEOEG
+VVVOEOEO
+VOVVVOEO
+VOVOEEEE
+VEVGOEOG
+OEOEEEEE
+EEEEOEEG
+
+RRRROOEO
+OEORRRRR
+EEEOOEOR
+EOEOEOEG
+EEEOEOEO
+EOEEEOEO
+EOEOEEEE
+EEEGOEOG
+OEOEEEEE
+EEEEOEEG
+
+
+Shortest path length = 11
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+******************** 
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 105
+VVVOOEO
+VVOOVOO
+OVOVVOE
+VVOVOEO
+OVVVOEO
+OVOVOEE
+VVVOOOE
+VOVOEEE
+VVVOGEE
+
+
+### There is no path to find a goal! ###
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+******************** 
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 106
+VVVVOOVO
+OVOVVVVV
+VVVOOGOO
+VOVOEOEG
+VEVOEOEO
+EOEEEOEO
+EOEOEEEE
+GEEEOEOE
+OGOEEEEE
+EEEEOGEE
+
+RRRROOEO
+OEORRREE
+EEEOOGOO
+EOEOEOEG
+EEEOEOEO
+EOEEEOEO
+EOEOEEEE
+GEEEOEOE
+OGOEEEEE
+EEEEOGEE
+
+
+Shortest path length = 8
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+******************** 
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 107
+VVVVOOVOEEG
+OVOVVVVVEOE
+VVVVOVOOOEE
+VOVOEVEOEEO
+VGVOEOEOEOO
+VOVVEOEOEOE
+VOVOEEEEEGE
+VVVGOEOEOOE
+
+RREEOOEOEEG
+OROEEEEEEOE
+RREEOEOOOEE
+ROEOEEEOEEO
+RGEOEOEOEOO
+EOEEEOEOEOE
+EOEOEEEEEGE
+EEEGOEOEOOE
+
+
+Shortest path length = 8
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+******************** 
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 108
+VVVVOOVOVVV
+OVOVVVVVVOV
+VVVVOVOOOVV
+VOVOVVVVVVO
+VVVOVOVOVOO
+VOVVVOVOVOV
+VOVOVVVVVGV
+VVVVOVOVOOV
+OVOVVVVVVVV
+
+RRRROOEOEEE
+OEORRREEEOE
+EEEEOROOOEE
+EOEOERRRREO
+EEEOEOEOROO
+EOEEEOEOROE
+EOEOEEEERGE
+EEEEOEOEOOE
+OEOEEEEEEEE
+
+
+Shortest path length = 16
+
+*** Path Finding ***
+* 0. Quit          *
+* 1. One goal      *
+* 2. More goals    *
+* 3. Shortest path *
+******************** 
+Input a command(0, 1, 2, 3): 3
+
+Input a file number: 109
+VVVVOOVOEEG
+OVOVVVVVEOE
+VVVVOVOOOEE
+VOVOEVEEEEO
+VGVOVOVOEOO
+VOVVVOVOEOV
+VOVOVVVVVGV
+VVVVOVOVOOV
+OVOVVVVVVVV
+
+RREEOOEOEEG
+OROEEEEEEOE
+RREEOEOOOEE
+ROEOEEEEEEO
+RGEOEOEOEOO
+EOEEEOEOEOE
+EOEOEEEEEGE
+EEEEOEOEOOE
+OEOEEEEEEEE
+
+
+Shortest path length = 8
 
 *** Path Finding ***
 * 0. Quit          *
@@ -6,14 +274,4 @@ spawn ./code
 * 2. More goals    *
 * 3. Shortest path *
 ********************
-Input a command(0, 1, 2, 3): 3
-
-Input a file number: 101
-free(): double free detected in tcache 2
-3
-102
-3
-103
-3
-104
-0
+Input a command(0, 1, 2, 3): 0
