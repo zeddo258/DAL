@@ -17,6 +17,7 @@ class Program:
 class Auto_Test:
     def __init__(self, upload_folder: str, topic: str, unit: str):
         self.upload_folder = os.path.join('uploads', upload_folder)
+        self.seq = upload_folder
         self.topic = topic
         self.unit = unit
         self.standard_answer = None
@@ -48,7 +49,7 @@ class Auto_Test:
                 current_program.state = 'Compile_Error'
                 current_program.error_message = result.stderr.decode('utf-8', errors='ignore')
             self.program_list.append(current_program)
-            os.remove(os.path.join(self.upload_folder, program_name))
+            # os.remove(os.path.join(self.upload_folder, program_name))
 
     def __copy_all_files(self, src_dir: str, dest_dir: str):
         if not os.path.exists(dest_dir):
@@ -113,9 +114,9 @@ class Auto_Test:
                 program.link = os.path.join('static', self.upload_folder, f'{program.name}.html')
                 with open(program.link, "w") as file:
                     file.write(html_content)
-            file_list.append({'name': program.name, 'status': program.state, 'link': program.link})
+            file_list.append({'name': program.name, 'status': program.state, 'link': program.link, 'upload_seq': self.seq, 'topic': self.topic, 'unit': self.unit})
         make_report_html(file_list, os.path.join('static', self.upload_folder, 'test_report.html'))
-        shutil.rmtree(self.upload_folder)
+        # shutil.rmtree(self.upload_folder)
         return os.path.join('static', self.upload_folder, 'test_report.html')
             
     def run(self):

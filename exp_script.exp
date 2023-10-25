@@ -6,12 +6,12 @@ set command_file [lindex $argv 1]
 spawn $executable
 
 set fp [open $command_file r]
-expect "*"
-after 1
+expect -re {\S} {}
+after 20
 while {[gets $fp line] >= 0} {
     send "$line\r"
-    expect "*" {}
-    after 5
+    expect -re {\S} {}
+    after 20
 }
 close $fp
 

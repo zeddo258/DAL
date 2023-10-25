@@ -4,6 +4,8 @@
 
 <head>
     <title>DAL Test Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <style>
         .title {
             font-size: 2rem;
@@ -19,9 +21,9 @@
             padding: 0;
         }
 
-        /* 單個列表項目樣式 */
+
         .list-item {
-            flex-basis: calc(50% - 0.5rem);
+            flex-basis: 50%;
             margin: 0.25rem;
             padding: 1rem;
             background-color: #f9f9f9;
@@ -29,6 +31,12 @@
             justify-content: space-between;
             list-style-type: none;
             border-bottom: 0.1rem solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .list-item {
+                flex-basis: 100%;
+            }
         }
 
         .list-item:hover {
@@ -77,21 +85,62 @@
         .list-item:hover {
             background-color: #eee;
         }
+
+        i {
+            padding-left: 0.5rem;
+            font-size: 1.5rem;
+            color: #414141;
+        }
+
+
     </style>
 </head>
 
 <body>
     <h1 class="title">DAL Test Report</h1>
     <hr />
+
     <ul id="dynamicList">
         <!-- 這裡會插入動態生成的項目 -->
-        <li class="list-item"><p href="https://www.google.com"><span class="file">檔案1</span><span
-                    class="status Success">Success</span></p></li>
+        <li class="list-item"><a href="https://www.google.com"><span class="file">檔案1 <a class="download"><i
+                            class="fa-solid fa-download"></i></a></span><span class="status Success">Success</span></a>
+        </li>
         <li class="list-item"><a href="https://www.google.com"><span class="file">檔案2</span><span
                     class="status Error">Error</span></a></li>
         <li class="list-item"><a href="https://www.google.com"><span class="file">檔案3</span><span
                     class="status Infinite-loop">Infinite-loop</span></a></li>
     </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const downloadLinks = document.querySelectorAll('.download');
+
+            downloadLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    console.log('Success:');
+                    event.preventDefault();
+                    event.stopPropagation(); // 阻止事件冒泡，因為我們有一個外部的 <a> 標籤
+
+                    // 發布你的 txt request
+                    fetch('/get_code', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'text/plain'
+                        },
+                        body: '你要發送的文本內容'
+                    })
+                        .then(response => response.json()) // 假設服務器回應是 JSON 格式
+                        .then(data => {
+                            console.log('Success:', data);
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

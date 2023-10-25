@@ -1,0 +1,176 @@
+spawn ./code
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: (29+101)*33/25
+It is a legitimate infix expression.
+Postfix expression: 29, 101, +, 33, *, 25, /
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: 24 * 7770 / (55 + 30 * 2)
+It is a legitimate infix expression.
+Postfix expression: 24, 7770, *, 55, 30, 2, *, +, /
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: (90 + (70 * (68 - 55 / 10)))
+It is a legitimate infix expression.
+Postfix expression: 90, 70, 68, 55, 10, /, -, *, +
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: 69/3+30*5-24/8
+It is a legitimate infix expression.
+Postfix expression: 69, 3, /, 30, 5, *, +, 24, 8, /, -
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: 50
+It is a legitimate infix expression.
+Postfix expression: 50
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: 33 / (2 - 2)
+It is a legitimate infix expression.
+Postfix expression: 33, 2, 2, -, /
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: 24 * 7770 ^ (55 + 30 * 2)
+Error 1: ^ is not a legitimate character.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: (90 + (70 * (68 - 55 / 10))
+Error 2: there is one extra open parenthesis.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: (29+101)*33/25)
+Error 2: there is one extra close parenthesis.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: ) 5 + 6(
+Error 2: there is one extra close parenthesis.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: 69/3++30*5-24/8
+Error 3: there is one extra operator.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: (24 * 7770) 19 / (55 + 30 * 2)
+Error 3: there is one extra operand.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: ()
+Error 3: it is not infix in the parentheses.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: (24*7770)+19(/55+30*2)
+Error 3: it is not infix in the parentheses.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: 3+()*2
+Error 3: it is not infix in the parentheses.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: ((2+8))
+It is a legitimate infix expression.
+Postfix expression: 2, 8, +
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: (29+101)*33%25
+Error 1: % is not a legitimate character.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 1
+
+Input an infix expression: 24 * 7770 % (55 + 30 * 2)
+Error 1: % is not a legitimate character.
+
+* Arithmetic Expression Evaluator *
+* 0. QUIT                         *
+* 1. Infix2postfix Transformation *
+***********************************
+Input a choice(0, 1): 0

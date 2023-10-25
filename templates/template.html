@@ -3,6 +3,7 @@
 
 <head>
     <title>DAL Test Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         .title {
             font-size: 2rem;
@@ -19,9 +20,8 @@
             padding: 0;
         }
 
-        /* 單個列表項目樣式 */
         .list-item {
-            flex-basis: calc(50% - 0.5rem);
+            flex-basis: 50%;
             margin: 0.25rem;
             padding: 1rem;
             background-color: #f9f9f9;
@@ -30,6 +30,13 @@
             list-style-type: none;
             border-bottom: 0.1rem solid #ddd;
         }
+
+        @media (max-width: 768px) {
+            .list-item {
+                flex-basis: 100%;
+            }
+        }
+
 
         .list-item:hover {
             background-color: #eee;
@@ -76,6 +83,13 @@
         .list-item:hover {
             background-color: #eee;
         }
+
+        
+        i {
+            padding-left: 0.5rem;
+            font-size: 1.5rem;
+            color: #414141;
+        }
     </style>
 </head>
 
@@ -86,7 +100,6 @@
     <ul id="dynamicList">
         <!-- 這裡會插入動態生成的項目 -->
     </ul>
-
 </body>
 
 </html>

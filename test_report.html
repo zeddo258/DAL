@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>DAL Test Report</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"/>
+<style>
+        .title {
+            font-size: 2rem;
+            padding-left: 1rem;
+            
+        }
+
+        /* 容器樣式 */
+        #dynamicList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+        }
+
+        .list-item {
+            flex-basis: 50%;
+            margin: 0.25rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            border-bottom: 0.1rem solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .list-item {
+                flex-basis: 100%;
+            }
+        }
+
+
+        .list-item:hover {
+            background-color: #eee;
+        }
+
+        /* 檔案和狀態的樣式 */
+        .file {
+            font-weight: bold;
+        }
+
+        .status {
+            padding-left: 1rem;
+        }
+
+        .Success {
+            color: green;
+        }
+
+        .Runtime_Error {
+            color: orange;
+        }
+
+        .Compile_Error {
+            color: red;
+        }
+
+        .list-item a {
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+        .list-item p {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+        .list-item:hover {
+            background-color: #eee;
+        }
+
+        
+        i {
+            padding-left: 0.5rem;
+            font-size: 1.5rem;
+            color: #414141;
+        }
+    </style>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadLink = document.getElementById('download_1');
+            downloadLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const get_code = {
+                    upload_seq: '123',
+                    topic: 'topic1',
+                    unit: 'unit1',
+                    target_file_name: '檔案1'
+                };
+                
+                fetch('/get_code', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(get_code)
+                })
+                    
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'download_1.zip';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+        </script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadLink = document.getElementById('download_2');
+            downloadLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const get_code = {
+                    upload_seq: '456',
+                    topic: 'topic2',
+                    unit: 'unit2',
+                    target_file_name: '檔案2'
+                };
+                
+                fetch('/get_code', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(get_code)
+                })
+                    
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'download_2.zip';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+        </script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadLink = document.getElementById('download_3');
+            downloadLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const get_code = {
+                    upload_seq: '789',
+                    topic: 'topic3',
+                    unit: 'unit3',
+                    target_file_name: '檔案3'
+                };
+                
+                fetch('/get_code', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(get_code)
+                })
+                    
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'download_3.zip';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+        </script></head>
+<body>
+<a class="title" href="/">DAL Test Report</a>
+<hr/>
+<ul id="dynamicList">
+<!-- 這裡會插入動態生成的項目 -->
+<li class="list-item"><a href="/#"><span class="file">檔案1<i class="fa-solid fa-download" id="download_1"></i></span><span class="status Success">Success</span></a></li><li class="list-item"><a href="/#"><span class="file">檔案2<i class="fa-solid fa-download" id="download_2"></i></span><span class="status Runtime_Error">Runtime_Error</span></a></li><li class="list-item"><a href="/#"><span class="file">檔案3<i class="fa-solid fa-download" id="download_3"></i></span><span class="status Compile_Error">Compile_Error</span></a></li></ul>
+</body>
+</html>
